@@ -1,0 +1,38 @@
+.timer-container {
+    background: rgba(51, 157, 255, 0.6);
+    color: #FFF;
+    display: flex;
+    font-weight: 600;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(6, 6, 6, 0.5);
+
+    .timer-title {
+        font-size: 20px;
+    }
+
+    .timer-text {
+        font-size: 1rem;
+        margin-right: 1rem;
+    }
+
+    .timer-countdown {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-left: 28px;
+
+        .timer-value {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    .arrow-button {
+        margin-left: 30px;
+        cursor: pointer;
+        color: #FFF;
+        font-size: 1.5rem;
+    }
+}
