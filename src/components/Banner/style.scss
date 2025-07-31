@@ -4,88 +4,75 @@
 
     .container {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         align-items: center;
-        padding: 15px 20px;
-        max-width: 1200px;
-        margin: 0 auto;
     }
 
-    &__content {
+    &__header {
         display: flex;
-        gap: 20px;
-    }
-
-    &__left {
-        max-width: 30%;
-        text-align: left;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 20px;
+        padding: 0 20px;
     }
 
     &__subtitle {
         font-size: 16px;
         color: #333;
-        margin-bottom: 10px;
-        white-space: nowrap;
+        white-space: pre-line;
+        text-align: left;
+        margin: 0;
+    }
+
+    &__promo-text {
+        font-size: 16px;
+        color: #333;
+        white-space: pre-line;
+        text-align: right;
+        margin: 0;
+
+        span {
+            color: rgba(6, 6, 6, 0.5);
+        }
+    }
+
+    &__image-container {
+        position: relative;
+        overflow: hidden;
+        border-top-left-radius: 140px;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 230px;
+        border-bottom-left-radius: 140px;
+        width: 100%;
+        max-width: 1200px;
     }
 
     &__image {
-        flex: 1;
-        position: relative;
-
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+        width: 100%;
+        height: auto;
+        border-radius: inherit;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        display: block;
     }
 
-    &__right {
-        max-width: 30%;
-        text-align: left;
-    }
-
-    &__title {
-        font-size: 24px;
-        font-weight: 500;
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    &__description {
-        font-size: 16px;
-        color: #666;
-        margin-bottom: 20px;
-    }
-
-    &__button {
-        display: inline-block;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-
-        &--primary {
-            background-color: #ffffff;
-            color: #333;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-            &:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            }
-        }
-    }
-
-    &__links {
-        margin-top: 15px;
+    &__arrow {
+        position: absolute;
+        top: 50%;
+        right: 20px;
+        transform: translateY(-50%);
         display: flex;
         flex-direction: column;
-        gap: 5px;
+        // align-items: center;
+        // gap: 5px;
     }
 
-    &__link {
+    &__arrow svg {
+        transform: rotate(-45deg);
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    &__arrow-text {
         font-size: 14px;
         color: #333;
         text-decoration: none;
@@ -96,10 +83,35 @@
         }
     }
 
-    &__indicators {
+    &__links {
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
         margin-top: 20px;
+        width: 100%;
+        max-width: 1200px;
+        padding: 0 20px;
+        align-items: flex-end;
+    }
+
+    &__link {
+        font-size: 20px;
+        color: #333;
+        text-decoration: underline;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #4a90e2;
+        }
+    }
+
+    &__indicators {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
     }
 
     &__indicator {
@@ -107,83 +119,124 @@
         height: 10px;
         background-color: #ccc;
         border-radius: 50%;
-        margin: 0 5px;
         transition: background-color 0.3s ease;
 
         &.active {
-            background-color: #4a90e2;
+            background-color: #000;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+    .banner {
+        &__subtitle {
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        &__subtitle br {
+            display: none;
+        }
+
+        &__subtitle::before {
+            content: "акция до 30 июня ●";
+        }
+
+        &__subtitle::after {
+            content: "быстро и безболезненно ●";
+            margin-left: 74px;
+        }
+
+        &__subtitle span {
+            display: none;
+        }
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .banner {
+        &__header {
+            padding: 0 15px;
+        }
+
+        &__subtitle,
+        &__promo-text {
+            font-size: 16px;
         }
     }
 }
 
 @media (max-width: 1023px) {
     .banner {
-        &__content {
-            flex-direction: column;
-            align-items: center;
+        &__header {
+            padding: 0 15px;
         }
 
-        &__left,
-        &__right {
-            max-width: 100%;
-        }
-
-        &__image {
-            img {
-                border-radius: 15px;
-            }
-        }
-
-        &__title {
-            font-size: 20px;
-        }
-
-        &__description {
+        &__subtitle,
+        &__promo-text {
             font-size: 14px;
         }
 
-        &__button {
-            padding: 8px 15px;
+        &__image {
+            border-radius: 100px 20px 200px 100px;
+        }
+
+        &__arrow {
+            top: 40%;
+            right: 15px;
         }
 
         &__links {
-            gap: 3px;
+            padding: 0 15px;
+            align-items: center;
         }
 
         &__link {
-            font-size: 12px;
+            font-size: 18px;
         }
     }
 }
 
 @media (max-width: 767px) {
     .banner {
-        &__content {
-            gap: 15px;
+        &__header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 0 10px;
         }
 
         &__subtitle {
-            font-size: 14px;
+            text-align: left;
         }
 
-        &__title {
-            font-size: 18px;
+        &__promo-text {
+            text-align: left;
+            align-self: flex-end;
         }
 
-        &__description {
+        &__subtitle,
+        &__promo-text {
             font-size: 12px;
         }
 
-        &__button {
-            padding: 8px 15px;
+        &__image {
+            border-radius: 80px 10px 150px 80px;
+        }
+
+        &__arrow {
+            top: 35%;
+            right: 10px;
         }
 
         &__links {
-            gap: 3px;
+            padding: 0 10px;
+            align-items: center;
         }
 
         &__link {
-            font-size: 10px;
+            font-size: 16px;
         }
     }
 }
