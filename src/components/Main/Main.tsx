@@ -4,7 +4,7 @@ import { Timer } from "../Timer/Timer";
 
 export const Main = () => {
   const endDate = new Date();
-  endDate.setDate(endDate.getDate() + 3);
+  endDate.setDate(endDate.getDate() + 4);
 
   return (
     <>
