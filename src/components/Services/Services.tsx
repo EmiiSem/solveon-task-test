@@ -48,20 +48,15 @@ export const Services: FC<ServicesProps> = ({ services }) => {
                                             <div className="services__image-with-arrow">
                                                 <img src={service.imageSrc} alt={service.title} className="services__image" />
                                                 <div className="services__arrow-circle">
-                                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <svg width="120" height="120" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#2B65F6" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
                                                     </svg>
                                                 </div>
+                                                <p>подробнее</p>
                                             </div>
                                         </div>
                                     </div>
                                     <p className="services__description">{service.description}</p>
-                                    <div className="services__more-link">
-                                        <span>подробнее</span>
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#2B65F6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </div>
                                 </>
                             ) : (
                                 <>

@@ -74,7 +74,71 @@
             flex-direction: column;
             gap: 30px;
             padding: 40px;
-            align-items: flex-start;
+            // align-items: flex-start;
+            align-items: flex-end;
+
+            .services__active-header {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .services__active-title-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 40px;
+                flex-wrap: wrap;
+            }
+
+            .services__item-title {
+                font-size: 40px;
+                text-align: left;
+                width: 500px;
+                text-transform: uppercase;
+                margin: 0;
+            }
+
+            .services__description {
+                font-size: 18px;
+                color: #666;
+                line-height: 1.6;
+                max-width: 40%;
+                align-self: flex-end;
+                margin-top: 0;
+            }
+
+            .services__image-with-arrow {
+                position: relative;
+
+                .services__image {
+                    width: 200px;
+                    height: 200px;
+                    
+                }
+
+                p {
+                    position: absolute;
+                    left: 100px;
+                    bottom: -38px;
+                    margin: 0;
+                    color: #2B65F6;
+                    font-weight: 500;
+                }
+
+                .services__arrow-circle {
+                    transform: rotate(-45deg);
+                    width: 130px;
+                    height: 130px;
+                    bottom: -36px;
+                    background-color: rgba(253, 254, 255, 0.6);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
         }
     }
 
@@ -228,29 +292,6 @@
         margin: 0;
         max-width: 80%;
     }
-
-    &__more-link {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        color: #2B65F6;
-        font-weight: 500;
-        font-size: 18px;
-        margin-top: 20px;
-        transition: all 0.3s ease;
-
-        svg {
-            transition: transform 0.3s ease;
-        }
-
-        &:hover {
-            color: darken(#2B65F6, 10%);
-
-            svg {
-                transform: translateX(5px);
-            }
-        }
-    }
 }
 
 @media (max-width: 1200px) {
@@ -259,8 +300,16 @@
             font-size: 32px;
         }
 
-        &__description {
-            font-size: 16px;
+        &__item-title {
+            font-size: 32px;
+            width: 400px;
+        }
+
+        &__image-width-arrow {
+            .services__image {
+                width: 180px;
+                height: 180px;
+            }
         }
     }
 }
@@ -268,6 +317,39 @@
 @media (max-width: 992px) {
     .services {
         padding: 60px 0;
+        gap: 20px;
+
+        &__item-title {
+            font-size: 28px !important;
+            width: 300px !important;
+        }
+
+        &__active-title-container {
+            gap: 30px !important;
+        }
+
+        &__description {
+            font-size: 16px !important;
+        }
+
+        &__image-with-arrow {
+            .services__image {
+                width: 150px;
+                height: 150px;
+            }
+
+            .services__arrow-circle {
+                width: 100px;
+                height: 100px;
+                bottom: -25px;
+                right: -25px;
+            }
+
+            p {
+                left: 80px;
+                bottom: -30px;
+            }
+        }
 
         &__header {
             margin-bottom: 40px;
@@ -278,6 +360,11 @@
 
             &.active {
                 padding: 30px;
+
+                .services__description {
+                    align-self: flex-start;
+                    margin-top: -85px;
+                }
             }
         }
 
@@ -295,12 +382,22 @@
 @media (max-width: 768px) {
     .services {
         padding: 50px 0;
+        align-items: center;
+
+        &__item-title {
+            font-size: 24px !important;
+        }
 
         &__item {
             padding: 20px;
 
             &.active {
                 padding: 25px;
+
+                .services__description {
+                    align-self: flex-start;
+                    margin-top: -90px;
+                }
             }
         }
 
