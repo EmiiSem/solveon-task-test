@@ -2,10 +2,12 @@ import { useEffect, useState, type FC } from "react";
 import "./style.scss";
 
 interface TimerProps {
-    endDate: Date;
+    endDate?: Date;
 }
 
 export const Timer: FC<TimerProps> = ({ endDate }) => {
+    const STORAGE_KEY = "laserDiscountEndTime";
+
     const [timeLeft, setTimeLeft] = useState<{ days: number; hours: number; minutes: number; seconds: number }>({
         days: 0,
         hours: 0,
@@ -14,13 +16,40 @@ export const Timer: FC<TimerProps> = ({ endDate }) => {
     });
 
     useEffect(() => {
+        const getEffectiveEndDate = (): Date => {
+            const stored = localStorage.getItem(STORAGE_KEY);
+
+            // Если есть сохраненная дата и она еще не истекла
+            if (stored) {
+                const savedDate = new Date(parseInt(stored, 10));
+                if (savedDate > new Date()) {
+                    return savedDate;
+                }
+            }
+
+            // Если передана endDate и нет сохраненной даты
+            if (endDate) {
+                localStorage.setItem(STORAGE_KEY, endDate.getTime().toString());
+                return endDate;
+            }
+
+            // Если нет ни сохраненной даты, ни endDate, создаем новую
+            const newEndDate = new Date();
+            newEndDate.setDate(newEndDate.getDate() + 4);
+            localStorage.setItem(STORAGE_KEY, newEndDate.getTime().toString());
+            return newEndDate;
+        };
+
+        const effectiveEndDate = getEffectiveEndDate();
+
         const updateTimer = () => {
             const now = new Date();
-            const diff = endDate.getTime() - now.getTime();
+            const diff = effectiveEndDate.getTime() - now.getTime();
 
-            if(diff <= 0) {
+            if (diff <= 0) {
                 // Прекращение акции
                 setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+                localStorage.removeItem(STORAGE_KEY);
                 return;
             }
 
@@ -34,9 +63,9 @@ export const Timer: FC<TimerProps> = ({ endDate }) => {
 
         updateTimer();
 
-        const intervalId = setInterval(updateTimer, 1000); // Обновление каждую секунду
+        const intervalId = setInterval(updateTimer, 1000);
 
-        return () => clearInterval(intervalId); // Очистка интервала при размонтировании
+        return () => clearInterval(intervalId);
     }, [endDate]);
 
     return (
