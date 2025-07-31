@@ -69,8 +69,10 @@ export const Services: FC<ServicesProps> = ({ services }) => {
                                         <span className="services__number">{service.id}</span>
                                     </div>
                                     <div className="services__center">
-                                        <img src={service.imageSrc} alt={service.title} className="services__image" />
-                                        <h3 className="services__item-title">{service.title}</h3>
+                                        <div className="services__center-position">
+                                            <img src={service.imageSrc} alt={service.title} className="services__image" />
+                                            <h3 className="services__item-title">{service.title}</h3>
+                                        </div>
                                     </div>
                                     <div className="services__right">
                                         <button className="services__toggle">
