@@ -12,7 +12,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 60px;
+        margin-bottom: 20px;
     }
 
     &__title {
@@ -20,6 +20,7 @@
         color: #333;
         margin: 0;
         font-weight: 600;
+        text-transform: uppercase;
     }
 
     &__more-button {
@@ -37,7 +38,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-            background-color: darken(#2B65F6, 10%);
+            background-color: #1a4dc4;
         }
 
         svg {
@@ -58,6 +59,8 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
+        border-top: 1px solid #000;
+        padding-top: 20px;
     }
 
     &__item {
@@ -76,6 +79,9 @@
             padding: 40px;
             // align-items: flex-start;
             align-items: flex-end;
+
+            position: relative;
+            padding-bottom: 100px;
 
             .services__active-header {
                 width: 100%;
@@ -99,6 +105,7 @@
                 width: 500px;
                 text-transform: uppercase;
                 margin: 0;
+                margin-top: -96px;
             }
 
             .services__description {
@@ -106,12 +113,14 @@
                 color: #666;
                 line-height: 1.6;
                 max-width: 40%;
-                align-self: flex-end;
-                margin-top: 0;
+                margin: 0;
+                position: absolute;
+                z-index: 1;
             }
 
             .services__image-with-arrow {
                 position: relative;
+                z-index: 2;
 
                 .services__image {
                     width: 200px;
@@ -231,7 +240,7 @@
         transition: all 0.3s ease;
 
         &:hover {
-            background: lighten(#333, 10%);
+            background: #4d4d4d;
         }
     }
 
@@ -294,6 +303,34 @@
     }
 }
 
+@media (min-width: 1201px) {
+    .services {
+        &__item {
+            &.active {
+                .services__description {
+                    align-self: flex-end;
+                    top: 48px;
+                    max-width: 26%;
+                }
+            }
+        }
+    }
+
+    @media (min-width: 1416px) {
+        .services {
+            &__item {
+                &.active {
+                    .services__description {
+                        align-self: flex-end;
+                        top: 48px;
+                        max-width: 40%;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media (max-width: 1200px) {
     .services {
         &__active-title {
@@ -311,6 +348,22 @@
                 height: 180px;
             }
         }
+
+        &__item {
+            &.active {
+                .services__description {
+                    align-self: flex-start;
+                    top: 162px;
+                    max-width: 45%;
+                }
+
+                .services__active-header {
+                    display: block;
+                }
+            }
+
+        }
+
     }
 }
 
@@ -360,10 +413,17 @@
 
             &.active {
                 padding: 30px;
+                padding-bottom: 120px !important;
 
                 .services__description {
                     align-self: flex-start;
-                    margin-top: -85px;
+                    // margin-top: -85px;
+                    top: 130px;
+                    max-width: 45%;
+                }
+
+                .services__active-header {
+                    display: block;
                 }
             }
         }
@@ -396,7 +456,6 @@
 
                 .services__description {
                     align-self: flex-start;
-                    margin-top: -90px;
                 }
             }
         }
@@ -408,6 +467,32 @@
         &__active-title {
             font-size: 24px;
         }
+    }
+
+    @media(max-width: 619px) {
+        .services {
+            &__item {
+                
+                &.active {
+                    padding-bottom: 175px !important;
+
+                    .services__item-title {
+                        margin-top: 0;
+                    }
+
+                    .services__image-with-arrow {
+                        left: 308px;
+                    }
+
+                    .services__description {
+                        max-width: 100%;
+                        top: 345px;
+                    }
+                    
+                }
+            }
+        }
+        
     }
 }
 
@@ -452,22 +537,60 @@
 
             &.active {
                 padding: 20px;
+                padding-bottom: 30px !important;
+
+                .services__description {
+                    position: static;
+                    max-width: 100%;
+                    margin-top: -22px;
+                }
+
+                .services__item-title {
+                    margin-top: 0;
+                    font-size: 28px !important;
+                    font-weight: 400;
+                }
+
+                .services__image {
+                    display: block;
+                    width: 171px !important;
+                    height: 171px !important;
+                }
+
+                .services__image-with-arrow {
+                    left: 136px;
+                    top: -36px;
+
+                    p {
+                        bottom: -10px;
+                        left: 88px;
+                    }
+                }
+
+                .services__arrow-circle {
+                    width: 68px !important;
+                    height: 68px !important;
+                    bottom: -5px !important;
+                    right: 6px;
+                }
             }
         }
 
         &__item-title {
-            font-size: 20px;
+            font-size: 16px !important;
+            width: 295px !important;
         }
 
         &__image {
             width: 60px;
             height: 60px;
+            display: none;
         }
 
         &__number {
-            width: 40px;
-            height: 40px;
-            font-size: 18px;
+            width: 17px;
+            height: 17px;
+            font-size: 14px;
         }
 
         &__description {
