@@ -7,9 +7,12 @@
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid rgba(6, 6, 6, 0.5);
+    padding: 0 15px;
+    flex-wrap: wrap;
 
     .timer-title {
         font-size: 20px;
+        margin-right: 10px;
     }
 
     .timer-text {
@@ -34,5 +37,68 @@
         cursor: pointer;
         color: #FFF;
         font-size: 1.5rem;
+    }
+
+    // Планшеты (768px - 1024px)
+    @media (max-width: 1024px) {
+        height: 50px;
+        
+        .timer-title {
+            font-size: 18px;
+            margin-right: 8px;
+        }
+
+        .timer-countdown {
+            margin-left: 20px;
+            
+            .timer-value {
+                font-size: 18px;
+            }
+        }
+
+        .arrow-button {
+            margin-left: 20px;
+            font-size: 1.3rem;
+        }
+    }
+
+    // Мобильные устройства (до 767px)
+    @media (max-width: 767px) {
+        height: auto;
+        padding: 10px 15px;
+        text-align: center;
+
+        .timer-title {
+            font-size: 16px;
+            margin-right: 0;
+            margin-bottom: 5px;
+        }
+
+        .timer-countdown {
+            margin: 5px 12px;
+            padding-top: 8px;
+            
+            .timer-value {
+                font-size: 16px;
+            }
+        }
+
+        .arrow-button {
+            margin: 5px 0 0 0;
+            font-size: 1.2rem;
+        }
+    }
+
+    // Очень маленькие экраны (до 400px)
+    @media (max-width: 400px) {
+        .timer-title {
+            font-size: 14px;
+        }
+
+        .timer-countdown {
+            .timer-value {
+                font-size: 14px;
+            }
+        }
     }
 }
