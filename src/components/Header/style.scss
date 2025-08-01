@@ -46,10 +46,232 @@
     align-items: center;
     gap: 15px;
   }
+
+  /* Бургер-меню */
+  &__burger {
+    display: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #333;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1002;
+
+    span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: #fff;
+      margin: 2px 0;
+      transition: 0.3s;
+    }
+
+    &.open span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    &.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    &.open span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+
+  /* Мобильное меню */
+  &__mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 1001;
+    animation: fadeIn 0.3s ease;
+  }
+
+  &__mobile-menu {
+    background-color: #fff;
+    width: 300px;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease;
+  }
+
+  &__mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+
+    h2 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #2B65F6;
+      margin: 0;
+    }
+  }
+
+  &__mobile-close {
+    background-color: #060606;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__mobile-nav {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  &__mobile-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__mobile-item {
+    margin-bottom: 15px;
+
+    &--dropdown {
+      .header__mobile-sublist {
+        margin-top: 10px;
+        padding-left: 15px;
+      }
+    }
+  }
+
+  &__mobile-link {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+  }
+
+  &__mobile-sublist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__mobile-subitem {
+    margin-bottom: 8px;
+  }
+
+  &__mobile-sublink {
+    font-size: 16px;
+    font-weight: 400;
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+  }
+
+  &__mobile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  @media (max-width: 768px) {
+    &__burger {
+      top: 114px;
+    }
+
+    .navigation {
+      display: none;
+    }
+
+    .button--icon {
+      display: none;
+    }
+
+    .header .container {
+      position: relative;
+    }
+
+    .header__logo {
+      &-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-main {
+        font-size: 92px;
+      }
+
+      &-secondary {
+        font-size: 24px;
+      }
+
+      &-image {
+        width: 148px !important;
+        height: 110px !important;
+        position: absolute;
+        right: 55px;
+        top: 54px;
+      }
+    }
+  }
+
+  @media (min-width: 769px) {
+    &__burger {
+      display: none !important;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @media (min-width: 1024px) {
   .header {
+    .container {
+      position: relative;
+    }
+
     &__logo {
       &-main {
         // font-size: 42px;
@@ -63,8 +285,11 @@
       &-image {
         // width: 50px;
         // height: 50px;
-        width: 200px;
-        height: 160px;
+        width: 153px;
+        height: 114px;
+        position: absolute;
+        right: 20px;
+        top: 65px;
       }
     }
   }
@@ -74,20 +299,24 @@
   .header {
     .container {
       padding: 12px 15px;
+      position: relative;
     }
 
     &__logo {
       &-main {
-        font-size: 32px;
+        font-size: 80px;
       }
 
       &-secondary {
-        font-size: 16px;
+        font-size: 32px;
       }
 
       &-image {
-        width: 40px;
-        height: 40px;
+        width: 111px;
+        height: 83px;
+        position: absolute;
+        right: 20px;
+        top: 24px;
       }
     }
   }
