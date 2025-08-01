@@ -1,5 +1,6 @@
 import { useState, type FC } from "react";
 import "./style.scss";
+import { ModalPopap } from "../ModalPopap/ModalPopap";
 
 interface Service {
     id: number;
@@ -14,17 +15,26 @@ interface ServicesProps {
 
 export const Services: FC<ServicesProps> = ({ services }) => {
     const [activeServiceId, setActiveServiceId] = useState<number | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleService = (id: number) => {
         setActiveServiceId(activeServiceId === id ? null : id);
     };
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
 
     return (
         <section className="services">
             <div className="container">
                 <div className="services__header">
                     <h2 className="services__title">● Популярные услуги</h2>
-                    <button className="services__more-button">
+                    <button className="services__more-button" onClick={openModal}>
                         больше услуг
                         <svg width="30" height="30" viewBox="0 0 200 180" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="100" cy="90" r="100" fill="#FFF" strokeWidth="3" />
@@ -84,6 +94,8 @@ export const Services: FC<ServicesProps> = ({ services }) => {
                     ))}
                 </div>
             </div>
+
+            <ModalPopap isOpen={isModalOpen} onClose={closeModal} />
         </section>
     );
 }

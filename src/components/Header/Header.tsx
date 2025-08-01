@@ -2,10 +2,12 @@ import "./style.scss";
 import logo from "../../assest/images/logo.png";
 import { Navigation } from "../Navigation/Navigation";
 import { Button } from "../Button/Button";
+import { ModalPopap } from "../ModalPopap/ModalPopap";
 import { useState } from "react";
 
 export const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -13,6 +15,14 @@ export const Header = () => {
 
     const closeMenu = () => {
         setIsMenuOpen(false);
+    }
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
     }
 
     return (
@@ -45,6 +55,7 @@ export const Header = () => {
                     <Button
                         text="записаться"
                         choose="primary"
+                        onClick={openModal}
                     />
                     <Button
                         choose="icon"
@@ -112,7 +123,9 @@ export const Header = () => {
                         </nav>
                     </div>
                 </div>
-            )}
+            )};
+
+            <ModalPopap isOpen={isModalOpen} onClose={closeModal} />
         </header>
     );
 };
