@@ -120,6 +120,45 @@
             background-color: #357abe;
         }
     }
+
+    &__success {
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+
+    &__success-title {
+        font-size: 24px;
+        color: #4a90e2;
+        margin-bottom: 15px;
+    }
+
+    &__success-message {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    &__input-group,
+    &__checkbox-group {
+        margin-bottom: 10px;
+    }
+
+    &__input--error {
+        border-color: #ff4d4f !important;
+    }
+
+    &__error {
+        color: #ff4d4f;
+        font-size: 12px;
+        display: block;
+        margin-top: 5px;
+    }
+
+    &__submit-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
 }
 
 @media (max-width: 768px) {
