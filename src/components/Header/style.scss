@@ -350,3 +350,24 @@
     }
   }
 }
+
+@media (max-width: 529px) {
+  .header {
+    .header__logo {
+      &-image {
+        width: 82px !important;
+      }
+    }
+  }
+
+  @media (max-width: 411px) {
+    .header {
+      .header__logo {
+        &-image {
+          right: 8px;
+          width: 72px !important;
+        }
+      }
+    }
+  }
+}
